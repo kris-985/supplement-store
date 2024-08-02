@@ -6,6 +6,7 @@ export const Footer = () => {
   return (
     <div>
       <FooterWrapper>
+        <Title>We are FitArt</Title>
         <Container>
           <TopSection>
             <LogoContainer>
@@ -54,12 +55,32 @@ const FooterWrapper = styled.footer`
   width: 100%;
   background-color: #c6d8e6;
   padding: 30px 0;
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
+`;
+
+const Title = styled.h1`
+  color: #dc3545;
+  text-align: center;
+  padding-bottom: 3rem;
+  text-decoration: underline;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    padding-bottom: 2rem;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 15px;
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 `;
 
 const TopSection = styled.div`
@@ -68,34 +89,56 @@ const TopSection = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const LogoContainer = styled.div`
   flex: 1;
   max-width: 200px;
+
+  @media (max-width: 768px) {
+    max-width: 150px;
+  }
 `;
 
 const LogoImage = styled.img`
   width: 100%;
   max-width: 200px;
+
+  @media (max-width: 768px) {
+    max-width: 150px;
+  }
 `;
 
 const NavContainer = styled.div`
   flex: 2;
   display: flex;
   justify-content: space-evenly;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const NavList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
 
   h6 {
     font-size: 16px;
     margin-bottom: 15px;
     color: #333;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
   }
 `;
 
@@ -114,15 +157,21 @@ const NavLink = styled.a`
 
 const ContactInfo = styled.div`
   text-align: center;
+
   h6 {
     margin-bottom: 10px;
     font-size: 16px;
     color: #333;
   }
+
   p {
     margin: 5px 0;
     font-size: 14px;
-    color: #666;
+    color: black;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
   }
 `;
 
@@ -138,12 +187,21 @@ const ImageContainer = styled.a`
 const KRISFITImage = styled.img`
   width: 80px;
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    width: 60px;
+  }
 `;
 
 const Description = styled.div`
   font-size: 14px;
   color: #333;
   max-width: 250px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    max-width: 200px;
+  }
 `;
 
 const FooterBottom = styled.p`
@@ -156,5 +214,6 @@ const FooterBottom = styled.p`
 
   @media (max-width: 768px) {
     font-size: 16px;
+    padding: 8px 0;
   }
 `;

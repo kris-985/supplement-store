@@ -4,8 +4,34 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { serviceItems } from "../utils";
 import ServiceItem from "./ServiceItem";
+import Carousel from "react-bootstrap/Carousel";
 
 export const Home = () => {
+
+  const products = [
+    {
+      name: "Protein Powder",
+      picture:
+        "https://fitnesdobavki.net/image/catalog/Optimum/OPTIMUM%20GOLD%20STANDARD%20100%20WHEY,%202270%20GRAMS%201.jpg",
+      description: "High-quality whey protein for muscle building.",
+      price: 29.99,
+    },
+    {
+      name: "BCAA",
+      picture:
+        "https://s13emagst.akamaized.net/products/10470/10469896/images/res_21226184e5547b5686351bc667827b38.jpg",
+      description: "Branched-chain amino acids for muscle recovery.",
+      price: 24.99,
+    },
+    {
+      name: "Mass Build Gainer",
+      picture: "https://www.silabg.com/uf/product/34456_pm_mass6-bag-430.jpg",
+      description:
+        "Supplements with a blend of carbs, protein, and fats, which are used to help you gain weight, especially if you are trying to bulk up",
+      price: 69.99,
+    },
+  ];
+
   const statsItems = [
     {
       count: "50+",
@@ -67,7 +93,33 @@ export const Home = () => {
         </TextOverlay>
       </ImageContainer>
       <StyledSeparator />
-
+      <div className="container my-5">
+        <h2 className="text-center mb-4 fw-bold">Most Ordered Products</h2>
+        <Carousel>
+          {products.map((product, index) => (
+            <Carousel.Item key={index}>
+              <div className="d-flex flex-column align-items-center">
+                <img
+                  src={product.picture}
+                  className="d-block"
+                  alt={product.name}
+                  style={{
+                    width: "350px",
+                    height: "350px",
+                    objectFit: "cover",
+                  }}
+                />
+                <h5 className="mt-3">{product.name}</h5>
+                <p>{product.description}</p>
+                <p>
+                  <strong>Price: ${product.price}</strong>
+                </p>
+                <button className="btn btn-danger mt-2">Buy Now</button>
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
       <div className="container my-5">
         <div className="row justify-content-center">
           {serviceItems.map((e, i) => (

@@ -9,6 +9,7 @@ import { getUserData } from "./services/users.services";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AppContext from "./context/AppContext";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 function App() {
   const [appState, setAppState] = useState({
@@ -60,6 +61,7 @@ function App() {
             <Route path="/account" element={<Account />} />
           </Routes>
           <Footer />
+          <ScrollToTop />
         </Fragment>
       )}
     </AppContext.Provider>
