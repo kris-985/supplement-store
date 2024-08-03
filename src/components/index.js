@@ -5,5 +5,15 @@ import { SignUp } from "./SignUp";
 import { Account } from "./Account";
 import { CheckoutForm } from "./CheckoutForm";
 import { HomeCarousel } from "./HomeCarousel";
+import { SingleProductCard } from "./SingleProductCard";
 
-export { NavBar, Footer, SignUp, Login, CheckoutForm, HomeCarousel, Account };
+export {
+  NavBar,
+  Footer,
+  SignUp,
+  Login,
+  CheckoutForm,
+  HomeCarousel,
+  Account,
+  SingleProductCard,
+};

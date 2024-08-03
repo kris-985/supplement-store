@@ -6,7 +6,7 @@ import AppContext from "../context/AppContext";
 import { logoutUser } from "../services/auth.services";
 
 export const NavBar = () => {
-  const { user, setContext } = useContext(AppContext);
+  const { user, userData, setContext } = useContext(AppContext);
 
   const logout = () => {
     logoutUser().then(() => {
@@ -60,6 +60,14 @@ export const NavBar = () => {
           <div className="d-flex gap-2">
             {user ? (
               <Fragment>
+                {userData.role === "admin" && (
+                  <NavButton
+                    to="/add-product"
+                    className="btn btn-outline-light"
+                  >
+                    Add product
+                  </NavButton>
+                )}
                 <NavButton to="/account" className="btn btn-outline-light">
                   Account
                 </NavButton>
@@ -92,7 +100,7 @@ export const NavBar = () => {
 };
 
 const LogoImage = styled.img`
-  max-width: 100px; 
+  max-width: 100px;
   width: 100%;
 `;
 
@@ -105,21 +113,21 @@ const StyledNavLink = styled(NavLink)`
 
 const Wrapper = styled.div`
   background-color: #c6d8e6;
-  padding: 0.5rem 1rem; 
+  padding: 0.5rem 1rem;
   .navbar-nav .nav-link {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
   }
   .btn {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 `;
 
 const NavItem = styled.li`
   .nav-link {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
   }
 `;
 
 const NavButton = styled(NavLink)`
-  font-size: 1rem; 
+  font-size: 1rem;
 `;
