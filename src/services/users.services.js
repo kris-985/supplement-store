@@ -19,7 +19,10 @@ export const createUserUsername = (
     firstname,
     lastname,
     createdOn: new Date(),
-    likedPosts: {},
+    favorites: {},
+    role: "user",
+    shoppingCart: [],
+    shippingAdress: "",
   });
 };
 
