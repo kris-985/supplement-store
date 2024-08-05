@@ -6,6 +6,9 @@ import { Account } from "./Account";
 import { CheckoutForm } from "./CheckoutForm";
 import { HomeCarousel } from "./HomeCarousel";
 import { SingleProductCard } from "./SingleProductCard";
+import { AddProduct } from "./AddProduct";
+import { TestimonialsSlider } from "./TestimonialsSlider";
+import { NewsletterForm } from "./NewsletterForm";
 
 export {
   NavBar,
@@ -16,4 +19,7 @@ export {
   HomeCarousel,
   Account,
   SingleProductCard,
+  AddProduct,
+  TestimonialsSlider,
+  NewsletterForm,
 };

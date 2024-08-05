@@ -1,13 +1,17 @@
 import { Fragment } from "react";
-import { HomeCarousel } from "../components";
+import {
+  HomeCarousel,
+  NewsletterForm,
+  TestimonialsSlider,
+} from "../components";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { serviceItems } from "../utils";
 import ServiceItem from "./ServiceItem";
 import Carousel from "react-bootstrap/Carousel";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export const Home = () => {
-
   const products = [
     {
       name: "Protein Powder",
@@ -95,7 +99,15 @@ export const Home = () => {
       <StyledSeparator />
       <div className="container my-5">
         <h2 className="text-center mb-4 fw-bold">Most Ordered Products</h2>
-        <Carousel>
+        <Carousel
+          nextIcon={
+            <FaChevronRight style={{ color: "black", fontSize: "2rem" }} />
+          }
+          prevIcon={
+            <FaChevronLeft style={{ color: "black", fontSize: "2rem" }} />
+          }
+          indicators={false}
+        >
           {products.map((product, index) => (
             <Carousel.Item key={index}>
               <div className="d-flex flex-column align-items-center">
@@ -154,6 +166,8 @@ export const Home = () => {
           ))}
         </div>
       </div>
+      <TestimonialsSlider />
+      <NewsletterForm />
     </Fragment>
   );
 };

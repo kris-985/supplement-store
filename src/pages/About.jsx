@@ -19,39 +19,6 @@ const values = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Great quality supplements and fantastic customer service! Highly recommended.",
-    author: "Jane D.",
-  },
-  {
-    quote:
-      "I've seen a noticeable improvement in my energy levels since using their products.",
-    author: "John S.",
-  },
-  {
-    quote:
-      "Excellent range of products and very knowledgeable staff. Will definitely return.",
-    author: "Emily R.",
-  },
-  {
-    quote:
-      "The best supplements I have tried! Their products have truly made a difference in my life.",
-    author: "Sarah T.",
-  },
-  {
-    quote:
-      "Exceptional quality and fast shipping. This store is my go-to for all my supplement needs.",
-    author: "Michael B.",
-  },
-  {
-    quote:
-      "I appreciate their commitment to sustainability and the quality of their products.",
-    author: "Lisa C.",
-  },
-];
-
 export const About = () => {
   return (
     <div className="container my-5">
@@ -93,14 +60,8 @@ export const About = () => {
                 Thank you for choosing our supplement store. We look forward to
                 supporting you on your journey to optimal health.
               </p>
-              <div className="text-center">
-                <NavLink to="/contacts" className="btn btn-danger btn-lg">
-                  Contacts
-                </NavLink>
-              </div>
             </div>
           </div>
-
           <div className="my-5 text-center">
             <h3 className="mb-4 text-danger">Our Values</h3>
             <div className="row">
@@ -109,22 +70,6 @@ export const About = () => {
                   <div className="p-4 border rounded shadow-sm bg-light border-3 border border-danger custom-shadow">
                     <h4 className="text-danger">{value.title}</h4>
                     <p>{value.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="text-center my-5">
-            <h3 className="mb-4 text-danger">What Our Customers Say</h3>
-            <div className="row">
-              {testimonials.map((testimonial, index) => (
-                <div className="col-md-4 mb-4" key={index}>
-                  <div className="p-4 border rounded shadow-sm bg-light border-3 border border-danger custom-shadow">
-                    <p className="font-italic">
-                      &quot;{testimonial.quote}&quot;
-                    </p>
-                    <p className="font-weight-bold">– {testimonial.author}</p>
                   </div>
                 </div>
               ))}

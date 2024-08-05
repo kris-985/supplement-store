@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
-import { Account, Login, NavBar, SignUp } from "./components";
+import { Account, Login, NavBar, SignUp,AddProduct } from "./components";
 import { About, Contacts, Home, Products, Cart } from "./pages";
 import { auth } from "./firebase";
 import { getUserData } from "./services/users.services";
@@ -55,6 +55,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/add-product" element={<AddProduct />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/cart" element={<Cart />} />
