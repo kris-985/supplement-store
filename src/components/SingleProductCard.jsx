@@ -1,12 +1,28 @@
-export const SingleProductCard = ({ product, handleAddToCart }) => {
+import React from "react";
+import { FaStar } from "react-icons/fa";
+
+export const SingleProductCard = ({
+  product,
+  handleAddToCart,
+  handleAddToFavourites,
+}) => {
   return (
     <div className="col-md-4 mb-4">
       <div className="card h-100 shadow red-shadow border-3 border border-danger">
-        <img
-          src={product.picture || "https://via.placeholder.com/150"}
-          className="card-img-top"
-          alt={product.name}
-        />
+        <div className="position-relative">
+          <img
+            src={product.picture || "https://via.placeholder.com/150"}
+            className="card-img-top"
+            alt={product.name}
+          />
+          <button
+            className="btn btn-transparent position-absolute top-0 end-0 m-2"
+            onClick={() => handleAddToFavourites(product)}
+            style={{ background: "transparent", border: "none" }}
+          >
+            <FaStar size={24} color="red" />
+          </button>
+        </div>
         <div className="card-body d-flex flex-column">
           <div className="d-flex justify-content-between">
             <h5 className="card-title">{product.name}</h5>
@@ -21,12 +37,6 @@ export const SingleProductCard = ({ product, handleAddToCart }) => {
             onClick={() => handleAddToCart(product)}
           >
             Add to Cart
-          </button>
-          <button
-            className="btn btn-danger mt-auto"
-            onClick={() => handleAddToCart(product)}
-          >
-            Add to Favourites
           </button>
         </div>
       </div>
