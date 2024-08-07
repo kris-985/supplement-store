@@ -9,6 +9,9 @@ import { SingleProductCard } from "./SingleProductCard";
 import { AddProduct } from "./AddProduct";
 import { TestimonialsSlider } from "./TestimonialsSlider";
 import { NewsletterForm } from "./NewsletterForm";
+import { Partners } from "./Partners";
+import { Choice } from "./Choice";
+import { Survey } from "./Survey";
 
 export {
   NavBar,
@@ -22,4 +25,7 @@ export {
   AddProduct,
   TestimonialsSlider,
   NewsletterForm,
+  Partners,
+  Choice,
+  Survey,
 };
