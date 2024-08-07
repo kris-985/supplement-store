@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 export const SingleProductCard = ({
   product,
@@ -20,7 +20,7 @@ export const SingleProductCard = ({
             onClick={() => handleAddToFavourites(product)}
             style={{ background: "transparent", border: "none" }}
           >
-            <FaStar size={24} color="red" />
+            <FaRegHeart size={30} color="red" />
           </button>
         </div>
         <div className="card-body d-flex flex-column">
@@ -36,7 +36,7 @@ export const SingleProductCard = ({
             className="btn btn-danger mt-auto"
             onClick={() => handleAddToCart(product)}
           >
-            Add to Cart
+           Buy now!
           </button>
         </div>
       </div>

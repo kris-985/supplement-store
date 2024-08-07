@@ -2,8 +2,6 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import styled from "styled-components";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const testimonials = [
   {
@@ -83,8 +81,37 @@ const testimonials = [
   },
 ];
 
-
-
+export const TestimonialsSlider = () => {
+  return (
+    <CarouselContainer>
+      <h1 className="text-center text-light my-5">Customer Testimonials</h1>
+      <StyledCarousel
+        indicators={false}
+        prevIcon={
+          <span aria-hidden="true" className="carousel-control-prev-icon" />
+        }
+        nextIcon={
+          <span aria-hidden="true" className="carousel-control-next-icon" />
+        }
+        interval={5000}
+        controls={false}
+      >
+        {testimonials.map((testimonial, index) => (
+          <Carousel.Item key={index}>
+            <div>
+              <StyledCard>
+                <Card.Body>
+                  <Card.Text>{testimonial.review}</Card.Text>
+                  <Card.Title>- {testimonial.name}</Card.Title>
+                </Card.Body>
+              </StyledCard>
+            </div>
+          </Carousel.Item>
+        ))}
+      </StyledCarousel>
+    </CarouselContainer>
+  );
+};
 
 const CarouselContainer = styled.div`
   position: relative;
@@ -101,64 +128,35 @@ const StyledCarousel = styled(Carousel)`
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  .carousel-inner {
+  .carousel-item div {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
 
-  .carousel-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  .carousel-item p {
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+
+  .carousel-item h5 {
+    margin-top: 0.5rem;
+    font-weight: bold;
   }
 `;
 
-const TestimonialCard = styled(Card)`
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 30rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #dc3545;
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  padding: 2rem;
+const StyledCard = styled(Card)`
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
-
-const CardText = styled(Card.Text)`
-  font-style: italic;
-  font-size: 1.1rem;
-`;
-
-const CardTitle = styled(Card.Title)`
-  font-weight: bold;
-  margin-top: 1rem;
-`;
-
-export const TestimonialsSlider = () => {
-  return (
-    <CarouselContainer>
-      <h1 className="text-center text-dark my-5">Customer Testimonials</h1>
-      <StyledCarousel
-        indicators={false}
-        prevIcon={<span aria-hidden="true" className="carousel-control-prev-icon" />}
-        nextIcon={<span aria-hidden="true" className="carousel-control-next-icon" />}
-        interval={5000}
-        controls={true}
-      >
-        {testimonials.map((testimonial, index) => (
-          <Carousel.Item key={index}>
-            <TestimonialCard>
-              <Card.Body>
-                <CardText>"{testimonial.review}"</CardText>
-                <CardTitle>- {testimonial.name}</CardTitle>
-              </Card.Body>
-            </TestimonialCard>
-          </Carousel.Item>
-        ))}
-      </StyledCarousel>
-    </CarouselContainer>
-  );
-};

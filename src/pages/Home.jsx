@@ -1,7 +1,10 @@
 import { Fragment } from "react";
 import {
+  Choice,
   HomeCarousel,
   NewsletterForm,
+  Partners,
+  Survey,
   TestimonialsSlider,
 } from "../components";
 import { NavLink } from "react-router-dom";
@@ -167,7 +170,10 @@ export const Home = () => {
         </div>
       </div>
       <TestimonialsSlider />
+      <Partners />
       <NewsletterForm />
+      <Survey />
+      <Choice />
     </Fragment>
   );
 };
