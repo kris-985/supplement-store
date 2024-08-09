@@ -62,7 +62,7 @@ const StyledCard = styled(Card)`
   margin: 20px 0;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  background: rgba(255, 255, 255, 0.1);
+  background: #dc3545;
 `;
 
 const Title = styled.h2`

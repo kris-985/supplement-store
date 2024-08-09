@@ -9,63 +9,12 @@ import {
 } from "../components";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { serviceItems } from "../utils";
+import { products, serviceItems, statsItems } from "../utils";
 import ServiceItem from "./ServiceItem";
 import Carousel from "react-bootstrap/Carousel";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export const Home = () => {
-  const products = [
-    {
-      name: "Protein Powder",
-      picture:
-        "https://fitnesdobavki.net/image/catalog/Optimum/OPTIMUM%20GOLD%20STANDARD%20100%20WHEY,%202270%20GRAMS%201.jpg",
-      description: "High-quality whey protein for muscle building.",
-      price: 29.99,
-    },
-    {
-      name: "BCAA",
-      picture:
-        "https://s13emagst.akamaized.net/products/10470/10469896/images/res_21226184e5547b5686351bc667827b38.jpg",
-      description: "Branched-chain amino acids for muscle recovery.",
-      price: 24.99,
-    },
-    {
-      name: "Mass Build Gainer",
-      picture: "https://www.silabg.com/uf/product/34456_pm_mass6-bag-430.jpg",
-      description:
-        "Supplements with a blend of carbs, protein, and fats, which are used to help you gain weight, especially if you are trying to bulk up",
-      price: 69.99,
-    },
-  ];
-
-  const statsItems = [
-    {
-      count: "50+",
-      label: "Satisfied Customers",
-      description:
-        "We have thousands of satisfied customers who trust us for their supplement needs.",
-    },
-    {
-      count: "369",
-      label: "Products Offered",
-      description:
-        "A wide range of high-quality supplements to support your health goals.",
-    },
-    {
-      count: "500+",
-      label: "Hours of Support",
-      description:
-        "Our dedicated team provides support around the clock for your convenience.",
-    },
-    {
-      count: "24/7",
-      label: "Customer Support",
-      description:
-        "Available 24/7 to assist you with any questions or concerns you may have.",
-    },
-  ];
-
   return (
     <Fragment>
       <HomeCarousel />
@@ -129,7 +78,6 @@ export const Home = () => {
                 <p>
                   <strong>Price: ${product.price}</strong>
                 </p>
-                <button className="btn btn-danger mt-2">Buy Now</button>
               </div>
             </Carousel.Item>
           ))}
@@ -179,6 +127,7 @@ export const Home = () => {
 };
 
 const StyledParallaxSection = styled.div`
+  background: rgba(0, 0, 0, 0.2);
   position: relative;
   text-align: center;
   color: white;
