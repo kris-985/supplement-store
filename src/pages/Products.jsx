@@ -1,29 +1,31 @@
-import React, { useState } from "react";
-import { products } from "../utils";
+import React, { useEffect, useState } from "react";
 import { SingleProductCard } from "../components";
-
-const generateRandomStars = () => Math.floor(Math.random() * 6) + 1;
+import {
+  fromProductsDocument,
+  getAllProducts,
+  getLiveTweets,
+} from "../services/product.services";
 
 export const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState([]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredProducts = products
-    .map((product) => ({
-      ...product,
-      stars: generateRandomStars(),
-    }))
-    .filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  useEffect(() => {
+    getAllProducts().then(setProducts).catch(console.error);
+  }, []);
 
-  const handleAddToCart = (product) => {
-    dispatch({ type: "ADD_ITEM", payload: product });
-  };
+  useEffect(() => {
+    const unsubscribe = getLiveTweets((snapshot) => {
+      if (snapshot.exists()) setProducts(fromProductsDocument(snapshot));
+    });
 
+    return () => unsubscribe();
+  }, []);
+  
   return (
     <div className="container my-5">
       <div className="row mb-4 justify-content-center">
@@ -38,13 +40,17 @@ export const Products = () => {
         </div>
       </div>
       <div className="row">
-        {filteredProducts.map((product, index) => (
-          <SingleProductCard
-            key={index}
-            product={product}
-            handleAddToCart={handleAddToCart}
-          />
-        ))}
+        {!products.length ? (
+          <h1>No Products</h1>
+        ) : (
+          products.map((product, index) => (
+            <SingleProductCard
+              key={index}
+              product={product}
+              handleAddToCart={() => console.log("hello")}
+            />
+          ))
+        )}
       </div>
     </div>
   );
