@@ -13,6 +13,7 @@ import { products, serviceItems, statsItems } from "../utils";
 import ServiceItem from "./ServiceItem";
 import Carousel from "react-bootstrap/Carousel";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { AnimatedCounter } from "../components/AnimatedCounter";
 
 export const Home = () => {
   return (
@@ -109,7 +110,9 @@ export const Home = () => {
           {statsItems.map((item, index) => (
             <div key={index} className="col-md-3">
               <div className="bg-light p-4 rounded shadow-sm">
-                <h1 className="display-4 text-danger">{item.count}</h1>
+                <h1 className="display-4 text-danger">
+                  <AnimatedCounter end={item.count} />
+                </h1>
                 <h5 className="mt-2">{item.label}</h5>
                 <p className="text-muted mt-2">{item.description}</p>
               </div>

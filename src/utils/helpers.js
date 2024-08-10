@@ -80,25 +80,25 @@ export const products = [
 
 export const statsItems = [
   {
-    count: "50+",
+    count: 50,
     label: "Satisfied Customers",
     description:
       "We have thousands of satisfied customers who trust us for their supplement needs.",
   },
   {
-    count: "369",
+    count: 369,
     label: "Products Offered",
     description:
       "A wide range of high-quality supplements to support your health goals.",
   },
   {
-    count: "500+",
+    count: 500,
     label: "Hours of Support",
     description:
       "Our dedicated team provides support around the clock for your convenience.",
   },
   {
-    count: "24/7",
+    count: 24,
     label: "Customer Support",
     description:
       "Available 24/7 to assist you with any questions or concerns you may have.",
