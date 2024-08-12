@@ -60,3 +60,46 @@ export const getproductById = (id) => {
     return product;
   });
 };
+
+export const likeProduct = (username, productId) => {
+  const updateLikes = {};
+  updateLikes[`/products/${productId}/likedBy/${username}`] = true;
+  updateLikes[`/users/${username}/likedProducts/${productId}`] = true;
+
+  return update(ref(db), updateLikes);
+};
+
+export const dislikeProduct = (username, productId) => {
+  const updateLikes = {};
+  updateLikes[`/products/${productId}/likedBy/${username}`] = null;
+  updateLikes[`/users/${username}/likedProducts/${productId}`] = null;
+
+  return update(ref(db), updateLikes);
+};
+
+export const getLikedProducts = (username) => {
+  return get(ref(db, `users/${username}`)).then((snapshot) => {
+    if (!snapshot.val()) {
+      throw new Error(`User with username ${username} does not exist!`);
+    }
+
+    const user = snapshot.val();
+    if (!user.likedProducts) return [];
+
+    return Promise.all(
+      Object.keys(user.likedProducts).map((key) => {
+        return get(ref(db, `products/${key}`)).then((snapshot) => {
+          const product = snapshot.val();
+          if (snapshot) {
+            return {
+              ...product,
+              id: key,
+              createdOn: new Date(product.createdOn),
+              likedBy: product.likedBy ? Object.keys(product.likedBy) : [],
+            };
+          }
+        });
+      })
+    );
+  });
+};
