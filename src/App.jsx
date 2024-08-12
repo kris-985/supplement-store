@@ -2,8 +2,8 @@ import { Fragment, useEffect, useState } from "react";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
-import { Account, Login, NavBar, SignUp,AddProduct } from "./components";
-import { About, Contacts, Home, Products, Cart } from "./pages";
+import { Account, Login, NavBar, SignUp, AddProduct } from "./components";
+import { About, Contacts, Home, Products, Cart, Favorite } from "./pages";
 import { auth } from "./firebase";
 import { getUserData } from "./services/users.services";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -60,6 +60,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/favorite" element={<Favorite />} />
           </Routes>
           <Footer />
           <ScrollToTop />

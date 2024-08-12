@@ -91,7 +91,6 @@ export const AddProduct = () => {
     });
   };
   
-  console.log(formImage);
   return (
     <CenteredContainer>
       <Card>

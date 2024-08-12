@@ -35,29 +35,35 @@ export const NavBar = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
             <NavItem>
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link fs-4" to="/">
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/about">
+              <NavLink className="nav-link fs-4" to="/about">
                 About
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/products">
+              <NavLink className="nav-link fs-4" to="/products">
                 Products
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/contacts">
+              <NavLink className="nav-link fs-4" to="/contacts">
                 Contacts
               </NavLink>
             </NavItem>
           </ul>
           <div className="d-flex gap-2">
+            <NavButton to="/favorite" className="btn btn-outline-light">
+              Favorite
+            </NavButton>
+            <NavButton to="/cart" className="btn btn-outline-light">
+              Cart
+            </NavButton>
             {user ? (
               <Fragment>
                 {userData.role === "admin" && (
@@ -81,17 +87,14 @@ export const NavBar = () => {
               </Fragment>
             ) : (
               <Fragment>
-                <NavButton to="/signup" className="btn btn-outline-light">
+                <NavButton to="/signup" className="btn btn-outline-light fs-4">
                   Sign Up
                 </NavButton>
-                <NavButton to="/login" className="btn btn-outline-light">
+                <NavButton to="/login" className="btn btn-outline-light fs-4">
                   Login
                 </NavButton>
               </Fragment>
             )}
-            <NavButton to="/cart" className="btn btn-outline-light">
-              Cart
-            </NavButton>
           </div>
         </div>
       </div>

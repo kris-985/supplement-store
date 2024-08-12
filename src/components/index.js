@@ -12,6 +12,7 @@ import { NewsletterForm } from "./NewsletterForm";
 import { Partners } from "./Partners";
 import { Choice } from "./Choice";
 import { Survey } from "./Survey";
+import { AnimatedCounter } from "./AnimatedCounter";
 
 export {
   NavBar,
@@ -28,4 +29,5 @@ export {
   Partners,
   Choice,
   Survey,
+  AnimatedCounter,
 };

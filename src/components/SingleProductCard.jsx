@@ -1,11 +1,19 @@
-import React from "react";
-import { FaRegHeart } from "react-icons/fa";
+import React, { useContext } from "react";
+import { FaHeart } from "react-icons/fa";
+import AppContext from "../context/AppContext";
 
 export const SingleProductCard = ({
   product,
   handleAddToCart,
-  handleAddToFavourites,
+  like,
+  dislike,
 }) => {
+  const { user } = useContext(AppContext);
+  const isProductFavorite = product.likedBy.includes(user);
+  const color = isProductFavorite ? "red" : "grey";
+  const renderFavorite = () =>
+    isProductFavorite ? dislike(product) : like(product);
+
   return (
     <div className="col-md-4 mb-4">
       <div className="card h-100 shadow red-shadow border-3 border border-danger">
@@ -16,20 +24,18 @@ export const SingleProductCard = ({
             alt={product.content.name}
           />
           <button
+            onClick={renderFavorite}
             className="btn btn-transparent position-absolute top-0 end-0 m-2"
-            onClick={() => handleAddToFavourites(product)}
             style={{ background: "transparent", border: "none" }}
           >
-            <FaRegHeart size={30} color="red" />
+            <FaHeart size={30} color={color} />
           </button>
         </div>
         <div className="card-body d-flex flex-column">
           <div className="d-flex justify-content-between">
             <h5 className="card-title">{product.content.name}</h5>
             <span>
-              {product.rating
-                ? "⭐".repeat(product.rating)
-                : "★".repeat(5)}
+              {product.rating ? "⭐".repeat(product.rating) : "★".repeat(5)}
             </span>
           </div>
           <p className="card-text flex-grow-1">{product.content.description}</p>
