@@ -46,7 +46,7 @@ export const Favorite = () => {
   };
 
   return (
-    <div className="container-fluid d-flex justify-content-around m-3">
+    <div className="container d-flex justify-content-around m-10 mt-3">
       <div className="row">
         {products.length === 0 ? (
           <h1>No products</h1>

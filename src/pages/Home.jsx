@@ -14,6 +14,7 @@ import ServiceItem from "./ServiceItem";
 import Carousel from "react-bootstrap/Carousel";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { AnimatedCounter } from "../components/AnimatedCounter";
+import { fitart } from "../assets";
 
 export const Home = () => {
   return (
@@ -22,6 +23,7 @@ export const Home = () => {
       <StyledParallaxSection>
         <InnerWrapper className="parallax" />
         <StyledTextCenter>
+          <SmallImage src={fitart} alt="" />
           <h1 className="display-3 text-light fw-bold">
             INNOVATION IS OUR STRENGTH
           </h1>
@@ -158,6 +160,24 @@ const InnerWrapper = styled.div`
   top: 0;
   left: 0;
   z-index: -1;
+`;
+
+const SmallImage = styled.img`
+  display: block;
+  margin: -250px auto 1rem auto;
+  width: 60%;
+  max-width: 650px;
+  height: auto;
+
+  @media (max-width: 768px) {
+    margin: -200px auto 1rem auto;
+    width: 80%;
+  }
+
+  @media (max-width: 576px) {
+    margin: -150px auto 1rem auto;
+    width: 90%;
+  }
 `;
 
 const StyledSeparator = styled.div`

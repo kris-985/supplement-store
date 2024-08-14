@@ -1,18 +1,22 @@
 import React, { useContext } from "react";
 import { FaHeart } from "react-icons/fa";
 import AppContext from "../context/AppContext";
+import { ref, update } from "firebase/database";
+import { db } from "../firebase";
 
-export const SingleProductCard = ({
-  product,
-  handleAddToCart,
-  like,
-  dislike,
-}) => {
+export const SingleProductCard = ({ product, like, dislike }) => {
   const { user } = useContext(AppContext);
   const isProductFavorite = product.likedBy.includes(user);
   const color = isProductFavorite ? "red" : "grey";
   const renderFavorite = () =>
     isProductFavorite ? dislike(product) : like(product);
+
+  const handleAddToCart = (product) => {
+    const updates = {};
+    updates[`/users/${user.username}/purchasedProducts/${product.id}`] = true;
+
+    update(ref(db), updates);
+  };
 
   return (
     <div className="col-md-4 mb-4">
