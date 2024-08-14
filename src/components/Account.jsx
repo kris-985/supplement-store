@@ -7,63 +7,49 @@ export const Account = () => {
   const { userData } = useContext(AppContext);
 
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-6">
-          <StyledCard className="card">
-            <img
-              src="https://img.freepik.com/premium-photo/measuring-scoop-whey-protein-wooden-table-prepare-milkshake_77593-264.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722470400&semt=ais_hybrid"
-              className="card-img-top"
-              alt="User"
-            />
-            <div className="card-body">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <strong>First Name:</strong> {userData.firstname}
-                </li>
-                <li className="list-group-item">
-                  <strong>Last Name:</strong> {userData.lastname}
-                </li>
-                <li className="list-group-item">
-                  <strong>Username:</strong> {userData.username}
-                </li>
-                <li className="list-group-item">
-                  <strong>Email:</strong> {userData.email}
-                </li>
-                <li className="list-group-item">
-                  <strong>Orders:</strong>
-                  {userData?.orders ? userData.orders : <span>No Orders</span>}
-                </li>
-                <li className="list-group-item">
-                  <strong>Shipping Address:</strong>
-                  {userData.shippingAdress || <span>No Address</span>}
-                </li>
-              </ul>
-            </div>
-          </StyledCard>
-        </div>
-        <div className="col-md-6">
-          <StyledCard className="card">
-            <div className="card-body">
-              <h5 className="card-title">Favorites</h5>
-              <ul className="list-group list-group-flush">
-                {userData?.favorites ? (
-                  userData.favorites.map((favorite, index) => (
-                    <li key={index} className="list-group-item">
-                      {favorite}
-                    </li>
-                  ))
-                ) : (
+    <BackgroundContainer>
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <StyledCard className="card">
+              <img
+                src="https://img.freepik.com/premium-photo/measuring-scoop-whey-protein-wooden-table-prepare-milkshake_77593-264.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722470400&semt=ais_hybrid"
+                className="card-img-top"
+                alt="User"
+              />
+              <div className="card-body">
+                <ul className="list-group list-group-flush">
                   <li className="list-group-item">
-                    <span>No Favorites</span>
+                    <strong>First Name:</strong> {userData.firstname}
                   </li>
-                )}
-              </ul>
-            </div>
-          </StyledCard>
+                  <li className="list-group-item">
+                    <strong>Last Name:</strong> {userData.lastname}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>Username:</strong> {userData.username}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>Email:</strong> {userData.email}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>Orders:</strong>
+                    {userData?.orders ? (
+                      userData.orders
+                    ) : (
+                      <span>No Orders</span>
+                    )}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>Shipping Address:</strong>
+                    {userData.shippingAdress || <span>No Address</span>}
+                  </li>
+                </ul>
+              </div>
+            </StyledCard>
+          </div>
         </div>
       </div>
-    </div>
+    </BackgroundContainer>
   );
 };
 
@@ -93,4 +79,16 @@ const StyledCard = styled.div`
     font-size: 1.25rem;
     margin-bottom: 15px;
   }
+`;
+
+const BackgroundContainer = styled.div`
+  background-image: url("https://www.hap.org/-/media/Project/HAP/HAP/Blog/Images/Post-Images/201806/proteinpowders1105x440-(1).jpg?rev=bd8bf95e484f4e0991af3c789e085045");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

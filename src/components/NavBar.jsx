@@ -35,7 +35,7 @@ export const NavBar = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <NavItem>
               <NavLink className="nav-link fs-4" to="/">
                 Home
@@ -57,7 +57,7 @@ export const NavBar = () => {
               </NavLink>
             </NavItem>
           </ul>
-          <div className="d-flex gap-2">
+          <ButtonContainer>
             <NavButton to="/favorite" className="btn btn-outline-light">
               Favorite
             </NavButton>
@@ -67,35 +67,28 @@ export const NavBar = () => {
             {user ? (
               <Fragment>
                 {userData.role === "admin" && (
-                  <NavButton
-                    to="/add-product"
-                    className="btn btn-outline-light"
-                  >
+                  <NavButton to="/add-product" className="btn btn-outline-light">
                     Add product
                   </NavButton>
                 )}
                 <NavButton to="/account" className="btn btn-outline-light">
                   Account
                 </NavButton>
-                <NavButton
-                  to="/"
-                  onClick={logout}
-                  className="btn btn-outline-light"
-                >
+                <NavButton to="/" onClick={logout} className="btn btn-outline-light">
                   Log out
                 </NavButton>
               </Fragment>
             ) : (
               <Fragment>
-                <NavButton to="/signup" className="btn btn-outline-light fs-4">
+                <NavButton to="/signup" className="btn btn-outline-light">
                   Sign Up
                 </NavButton>
-                <NavButton to="/login" className="btn btn-outline-light fs-4">
+                <NavButton to="/login" className="btn btn-outline-light">
                   Login
                 </NavButton>
               </Fragment>
             )}
-          </div>
+          </ButtonContainer>
         </div>
       </div>
     </Wrapper>
@@ -120,9 +113,6 @@ const Wrapper = styled.div`
   .navbar-nav .nav-link {
     font-size: 1.1rem;
   }
-  .btn {
-    font-size: 1rem;
-  }
 `;
 
 const NavItem = styled.li`
@@ -131,6 +121,21 @@ const NavItem = styled.li`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+`;
+
 const NavButton = styled(NavLink)`
   font-size: 1rem;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
 `;
