@@ -105,41 +105,15 @@ export const getLikedProducts = (username) => {
 };
 
 export const getPurchasedProducts = async (username) => {
-  try {
-    const userSnapshot = await get(ref(db, `users/${username}`));
-    if (!userSnapshot.exists()) {
-      throw new Error(`User with username ${username} does not exist!`);
-    }
-
-    const user = userSnapshot.val();
-    if (!user.purchasedProducts) return [];
-
-    const productPromises = Object.keys(user.purchasedProducts).map(
-      async (key) => {
-        const productSnapshot = await get(ref(db, `products/${key}`));
-        if (productSnapshot.exists()) {
-          const product = productSnapshot.val();
-          return {
-            ...product,
-            id: key,
-            createdOn: new Date(product.createdOn),
-            likedBy: product.likedBy ? Object.keys(product.likedBy) : [],
-          };
-        }
-      }
-    );
-
-    const products = await Promise.all(productPromises);
-    return products.filter((product) => product !== undefined);
-  } catch (error) {
-    console.error("Error fetching purchased products:", error);
-    return [];
-  }
+  return get(ref(db, `users/${username}/cart`)).then((snapshot) => {
+    if (!snapshot.exists()) return {};
+    console.log(snapshot.val());
+    return snapshot.val();
+  });
 };
 
-export const updatePurchasedProducts = (username, purchasedProducts) => {
+export const updatePurchasedProducts = (username, cart) => {
   const updates = {};
-  updates[`/users/${username}/purchasedProducts`] = purchasedProducts;
-
+  updates[`/users/${username}/cart`] = cart;
   return update(ref(db), updates);
 };

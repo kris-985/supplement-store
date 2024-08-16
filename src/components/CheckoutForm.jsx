@@ -1,62 +1,61 @@
-import React, { useState } from 'react';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-export const CheckoutForm = () => {
+export const CheckoutForm = ({
+  totalPrice,
+  setPaymentStatus,
+  setPurchasedProducts,
+  user,
+  shippingAddress,
+}) => {
   const stripe = useStripe();
   const elements = useElements();
-  const navigate = useNavigate();
-  const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState(false);
 
-  const handleSubmit = async (event) => {
+  const handlePayment = async (event) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
 
-    setProcessing(true);
-    setError(null);
-
     const cardElement = elements.getElement(CardElement);
 
-    const { error: stripeError, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
       card: cardElement,
+      billing_details: {
+        address: {
+          line1: shippingAddress,
+        },
+      },
     });
 
-    if (stripeError) {
-      console.error('Error creating payment method:', stripeError);
-      setError(stripeError.message);
-      setProcessing(false);
+    if (error) {
+      console.error(error);
+      setPaymentStatus("Payment failed. Please try again.");
     } else {
-      console.log('PaymentMethod created:', paymentMethod);
+      console.log("PaymentMethod", paymentMethod);
 
-      setTimeout(() => {
-        navigate('/success');
-      }, 1000); 
+      // Simulate payment success
+      setPaymentStatus("Payment successful!");
 
-      setProcessing(false);
+      // Clear the cart
+      setPurchasedProducts([]);
+
+      // Update the database to reflect the cleared cart
+      updatePurchasedProducts(user, []).catch(console.error);
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <CardElement />
-      {error && <span style={{ color: 'red' }}>{error}</span>}
-      <button type="submit" disabled={!stripe || processing}>
-        {processing ? 'Processing...' : 'Pay'}
+    <form onSubmit={handlePayment}>
+      <CardElement className="form-control p-3 border rounded mb-3" />
+      <button
+        className="btn btn-success w-100 mt-3"
+        type="submit"
+        disabled={!stripe}
+      >
+        Pay ${totalPrice}
       </button>
-    </Form>
+    </form>
   );
 };
-
-const Form = styled.form`
-  width: 400px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
