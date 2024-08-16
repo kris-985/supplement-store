@@ -4,6 +4,7 @@ import {
   HomeCarousel,
   NewsletterForm,
   Partners,
+  PromoSlider,
   Survey,
   TestimonialsSlider,
 } from "../components";
@@ -100,6 +101,7 @@ export const Home = () => {
           ))}
         </div>
       </div>
+      <PromoSlider />
       <div className="container my-5">
         <div className="text-center mb-5">
           <img

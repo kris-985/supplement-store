@@ -13,6 +13,7 @@ import { Choice } from "./Choice";
 import { Survey } from "./Survey";
 import { AnimatedCounter } from "./AnimatedCounter";
 import { CheckoutForm } from "./CheckoutForm";
+import { PromoSlider } from "./PromoSlider";
 
 export {
   NavBar,
@@ -30,4 +31,5 @@ export {
   Survey,
   AnimatedCounter,
   CheckoutForm,
+  PromoSlider,
 };
