@@ -13,7 +13,7 @@ export const SingleProductCard = ({ product, like, dislike }) => {
 
   const handleAddToCart = (product) => {
     const updates = {};
-    updates[`/users/${user.username}/purchasedProducts/${product.id}`] = true;
+    updates[`/users/${user}/cart/${product.id}`] = { ...product, quantity: 1 };
 
     update(ref(db), updates);
   };

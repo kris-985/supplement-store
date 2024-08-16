@@ -3,7 +3,6 @@ import { Footer } from "./Footer";
 import { Login } from "./Login";
 import { SignUp } from "./SignUp";
 import { Account } from "./Account";
-import { CheckoutForm } from "./CheckoutForm";
 import { HomeCarousel } from "./HomeCarousel";
 import { SingleProductCard } from "./SingleProductCard";
 import { AddProduct } from "./AddProduct";
@@ -13,13 +12,13 @@ import { Partners } from "./Partners";
 import { Choice } from "./Choice";
 import { Survey } from "./Survey";
 import { AnimatedCounter } from "./AnimatedCounter";
+import { CheckoutForm } from "./CheckoutForm";
 
 export {
   NavBar,
   Footer,
   SignUp,
   Login,
-  CheckoutForm,
   HomeCarousel,
   Account,
   SingleProductCard,
@@ -30,4 +29,5 @@ export {
   Choice,
   Survey,
   AnimatedCounter,
+  CheckoutForm,
 };
