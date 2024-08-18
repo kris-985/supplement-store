@@ -1,59 +1,41 @@
+import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 export const CheckoutForm = ({
   totalPrice,
   setPaymentStatus,
-  setPurchasedProducts,
-  user,
-  shippingAddress,
+  handleSuccessfulPayment,
 }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const handlePayment = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
 
-    const cardElement = elements.getElement(CardElement);
+    // Here, we simulate a successful payment. In real-world scenarios,
+    // you would call stripe.confirmCardPayment or another appropriate method
+    const paymentResult = { paymentIntent: { status: "succeeded" } }; // Simulated success
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: cardElement,
-      billing_details: {
-        address: {
-          line1: shippingAddress,
-        },
-      },
-    });
+    if (paymentResult.paymentIntent.status === "succeeded") {
+      setPaymentStatus("Payment successful! Your order has been placed.");
 
-    if (error) {
-      console.error(error);
-      setPaymentStatus("Payment failed. Please try again.");
+      // Call the success handler
+      await handleSuccessfulPayment();
     } else {
-      console.log("PaymentMethod", paymentMethod);
-
-      // Simulate payment success
-      setPaymentStatus("Payment successful!");
-
-      // Clear the cart
-      setPurchasedProducts([]);
-
-      // Update the database to reflect the cleared cart
-      updatePurchasedProducts(user, []).catch(console.error);
+      setPaymentStatus(
+        "There was an issue processing your payment. Please try again."
+      );
     }
   };
 
   return (
-    <form onSubmit={handlePayment}>
-      <CardElement className="form-control p-3 border rounded mb-3" />
-      <button
-        className="btn btn-success w-100 mt-3"
-        type="submit"
-        disabled={!stripe}
-      >
+    <form onSubmit={handleSubmit}>
+      <CardElement />
+      <button type="submit" disabled={!stripe}>
         Pay ${totalPrice}
       </button>
     </form>

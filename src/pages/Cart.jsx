@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import AppContext from "../context/AppContext";
-import {
-  getPurchasedProducts,
-  updatePurchasedProducts,
-} from "../services/product.services";
+
 import { FaTimes } from "react-icons/fa";
 import { CheckoutForm } from "../components";
+import {
+  getPurchasedProducts,
+  saveOrderHistory,
+} from "../services/product.services";
 
 // Load your Stripe public key
 const stripePromise = loadStripe(
@@ -33,16 +34,33 @@ export const Cart = () => {
       console.error("User is not defined");
     }
   }, [user]);
+
+  const handleSuccessfulPayment = async () => {
+    try {
+      // Save the order history
+      await saveOrderHistory(
+        user,
+        purchasedProducts,
+        finalPrice,
+        shippingAddress
+      );
+
+      // Clear the cart
+      setPurchasedProducts([]);
+
+      setPaymentStatus("Payment successful! Your order has been placed.");
+    } catch (error) {
+      console.error("Error handling payment:", error);
+      setPaymentStatus(
+        "There was an issue processing your payment. Please try again."
+      );
+    }
+  };
   const handleRemove = (productId) => {
     const updatedProducts = Object.values(purchasedProducts).filter(
       (product) => product.id !== productId
     );
     setPurchasedProducts(updatedProducts);
-
-    // Optionally, also remove from the database
-    const updates = {};
-    updates[`/users/${user}/cart/${productId}`] = null;
-    update(ref(db), updates).catch(console.error);
   };
 
   const handleQuantityChange = (productId, newQuantity) => {
@@ -251,6 +269,7 @@ export const Cart = () => {
                   setPurchasedProducts={setPurchasedProducts}
                   user={user}
                   shippingAddress={shippingAddress}
+                  handleSuccessfulPayment={handleSuccessfulPayment}
                 />
               </Elements>
             </div>

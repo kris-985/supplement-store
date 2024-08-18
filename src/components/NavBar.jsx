@@ -61,20 +61,30 @@ export const NavBar = () => {
             <NavButton to="/favorite" className="btn btn-outline-light">
               Favorite
             </NavButton>
+            <NavButton to="/orderhistory" className="btn btn-outline-light">
+              Order History
+            </NavButton>
             <NavButton to="/cart" className="btn btn-outline-light">
               Cart
             </NavButton>
             {user ? (
               <Fragment>
                 {userData.role === "admin" && (
-                  <NavButton to="/add-product" className="btn btn-outline-light">
+                  <NavButton
+                    to="/add-product"
+                    className="btn btn-outline-light"
+                  >
                     Add product
                   </NavButton>
                 )}
                 <NavButton to="/account" className="btn btn-outline-light">
                   Account
                 </NavButton>
-                <NavButton to="/" onClick={logout} className="btn btn-outline-light">
+                <NavButton
+                  to="/"
+                  onClick={logout}
+                  className="btn btn-outline-light"
+                >
                   Log out
                 </NavButton>
               </Fragment>
@@ -126,7 +136,7 @@ const ButtonContainer = styled.div`
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: flex-end;
-  
+
   @media (max-width: 768px) {
     gap: 0.5rem;
   }
