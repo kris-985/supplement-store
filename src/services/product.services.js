@@ -112,8 +112,33 @@ export const getPurchasedProducts = async (username) => {
   });
 };
 
-export const updatePurchasedProducts = (username, cart) => {
-  const updates = {};
-  updates[`/users/${username}/cart`] = cart;
-  return update(ref(db), updates);
+export const saveOrderHistory = async (
+  username,
+  products,
+  totalPrice,
+  shippingAddress
+) => {
+  const order = {
+    products,
+    totalPrice,
+    shippingAddress,
+    orderDate: new Date().toISOString(),
+  };
+
+  const newOrderRef = push(ref(db, `users/${username}/orderhistory`));
+  await update(newOrderRef, order);
+};
+
+export const getOrderHistory = async (username) => {
+  return get(ref(db, `users/${username}/orderhistory`)).then((snapshot) => {
+    if (!snapshot.exists()) return [];
+
+    const orders = snapshot.val();
+    console.log("Order history fetched:", orders);
+
+    return Object.values(orders).map((order) => ({
+      ...order,
+      products: Array.isArray(order.products) ? order.products : [],
+    }));
+  });
 };

@@ -166,8 +166,8 @@ const InnerWrapper = styled.div`
 
 const SmallImage = styled.img`
   display: block;
-  margin: -250px auto 1rem auto;
-  width: 60%;
+  margin: -330px auto 1rem auto;
+  width: 600px;
   max-width: 650px;
   height: auto;
 
