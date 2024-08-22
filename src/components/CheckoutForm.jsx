@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 export const CheckoutForm = ({
@@ -8,22 +8,24 @@ export const CheckoutForm = ({
 }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const [cardError, setCardError] = useState(null);
+  const [isCardComplete, setIsCardComplete] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) {
+    if (!stripe || !elements || !isCardComplete) {
+      if (!isCardComplete) {
+        setPaymentStatus("Please enter your card details.");
+      }
       return;
     }
 
-    // Here, we simulate a successful payment. In real-world scenarios,
-    // you would call stripe.confirmCardPayment or another appropriate method
-    const paymentResult = { paymentIntent: { status: "succeeded" } }; // Simulated success
+    const paymentResult = { paymentIntent: { status: "succeeded" } };
 
     if (paymentResult.paymentIntent.status === "succeeded") {
       setPaymentStatus("Payment successful! Your order has been placed.");
 
-      // Call the success handler
       await handleSuccessfulPayment();
     } else {
       setPaymentStatus(
@@ -32,10 +34,16 @@ export const CheckoutForm = ({
     }
   };
 
+  const handleCardChange = (event) => {
+    setCardError(event.error ? event.error.message : null);
+    setIsCardComplete(event.complete);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button type="submit" disabled={!stripe}>
+      <CardElement onChange={handleCardChange} />
+      {cardError && <div style={{ color: "red" }}>{cardError}</div>}
+      <button type="submit" disabled={!stripe || !isCardComplete}>
         Pay ${totalPrice}
       </button>
     </form>

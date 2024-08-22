@@ -14,6 +14,8 @@ import { Survey } from "./Survey";
 import { AnimatedCounter } from "./AnimatedCounter";
 import { CheckoutForm } from "./CheckoutForm";
 import { PromoSlider } from "./PromoSlider";
+import { OrderSummary } from "./OrderSummary";
+import { SingleCartCard } from "./SingleCartCard";
 
 export {
   NavBar,
@@ -32,4 +34,6 @@ export {
   AnimatedCounter,
   CheckoutForm,
   PromoSlider,
+  OrderSummary,
+  SingleCartCard,
 };
