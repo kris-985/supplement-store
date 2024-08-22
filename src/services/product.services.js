@@ -127,6 +127,8 @@ export const saveOrderHistory = async (
 
   const newOrderRef = push(ref(db, `users/${username}/orderhistory`));
   await update(newOrderRef, order);
+  const cart = `users/${username}/cart`;
+  await update(ref(db), { [cart]: null });
 };
 
 export const getOrderHistory = async (username) => {

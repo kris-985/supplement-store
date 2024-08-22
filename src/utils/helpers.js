@@ -104,3 +104,37 @@ export const statsItems = [
       "Available 24/7 to assist you with any questions or concerns you may have.",
   },
 ];
+
+export const validCodes = {
+  DISCOUNT10: 10,
+  DISCOUNT20: 20,
+  FREESHIP: 5,
+};
+
+export const priceSum = (purchasedProducts, appliedDiscounts) => {
+  const totalPriceWithoutDiscount = Object.values(purchasedProducts).reduce(
+    (acc, product) => {
+      const price = Number(product.content?.price) || 0;
+      return acc + price * product.quantity;
+    },
+    0
+  );
+
+  const totalDiscount = appliedDiscounts.reduce(
+    (acc, discount) => acc + discount,
+    0
+  );
+
+  const totalPrice = (
+    totalPriceWithoutDiscount *
+    (1 - totalDiscount / 100)
+  ).toFixed(2);
+
+  const shippingCost = totalPriceWithoutDiscount >= 100 ? 0 : 10; // Example shipping cost
+  const finalPrice = (parseFloat(totalPrice) + shippingCost).toFixed(2);
+  return {
+    totalPrice,
+    shippingCost,
+    finalPrice,
+  };
+};

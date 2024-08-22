@@ -18,6 +18,19 @@ export const SingleProductCard = ({ product, like, dislike }) => {
     update(ref(db), updates);
   };
 
+  const handleFavorite = () => {
+    const updates = {};
+    if (isProductFavorite) {
+
+      updates[`/users/${user}/favorites/${product.id}`] = null;
+    } else {
+
+      updates[`/users/${user}/favorites/${product.id}`] = product;
+    }
+    update(ref(db), updates);
+    renderFavorite(); 
+  };
+
   return (
     <div className="col-md-4 mb-4">
       <div className="card h-100 shadow red-shadow border-3 border border-danger">
@@ -28,7 +41,7 @@ export const SingleProductCard = ({ product, like, dislike }) => {
             alt={product.content.name}
           />
           <button
-            onClick={renderFavorite}
+            onClick={handleFavorite}
             className="btn btn-transparent position-absolute top-0 end-0 m-2"
             style={{ background: "transparent", border: "none" }}
           >
