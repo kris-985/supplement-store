@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import AppContext from "../context/AppContext";
 import { ref, update } from "firebase/database";
@@ -6,6 +6,7 @@ import { db } from "../firebase";
 
 export const SingleProductCard = ({ product, like, dislike }) => {
   const { user } = useContext(AppContext);
+  const [quantity, setQuantity] = useState(1);
   const isProductFavorite = product.likedBy.includes(user);
   const color = isProductFavorite ? "red" : "grey";
   const renderFavorite = () =>
@@ -13,7 +14,7 @@ export const SingleProductCard = ({ product, like, dislike }) => {
 
   const handleAddToCart = (product) => {
     const updates = {};
-    updates[`/users/${user}/cart/${product.id}`] = { ...product, quantity: 1 };
+    updates[`/users/${user}/cart/${product.id}`] = { ...product, quantity };
 
     update(ref(db), updates);
   };
@@ -21,14 +22,18 @@ export const SingleProductCard = ({ product, like, dislike }) => {
   const handleFavorite = () => {
     const updates = {};
     if (isProductFavorite) {
-
       updates[`/users/${user}/favorites/${product.id}`] = null;
     } else {
-
       updates[`/users/${user}/favorites/${product.id}`] = product;
     }
     update(ref(db), updates);
-    renderFavorite(); 
+    renderFavorite();
+  };
+
+  const handleQuantityChange = (amount) => {
+    if (quantity + amount >= 1) {
+      setQuantity(quantity + amount);
+    }
   };
 
   return (
@@ -59,6 +64,22 @@ export const SingleProductCard = ({ product, like, dislike }) => {
           <h6 className="card-subtitle mb-2 text-muted">
             ${Number(product.content.price).toFixed(2)}
           </h6>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => handleQuantityChange(-1)}
+            >
+              -
+            </button>
+            <span>{quantity}</span>
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => handleQuantityChange(1)}
+            >
+              +
+            </button>
+          </div>
+
           <button
             className="btn btn-danger mt-auto"
             onClick={() => handleAddToCart(product)}
