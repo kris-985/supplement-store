@@ -92,7 +92,7 @@ Setup
 
 1.Clone the repository:
 
-git clone https://github.com/your-username/supplement-store.git
+git clone https://github.com/kris-985/supplement-store.git
 
 cd supplement-store
 
@@ -103,14 +103,23 @@ Go to your Firebase console and set up the project by configuring Firebase Authe
 Update the Firebase configuration in the project with your project's Firebase credentials:
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAQ4v5yNtDavDf9R1iun95fw76lBM7wmw8",
-  authDomain: "supplement-store-c68a2.firebaseapp.com",
-  projectId: "supplement-store-c68a2",
-  storageBucket: "supplement-store-c68a2.appspot.com",
-  messagingSenderId: "954928525287",
-  appId: "1:954928525287:web:cdb2a46a25c4f2b0e45742",
-  measurementId: "G-BVM6DBK7N2",
-  databaseURL: "https://supplement-store-c68a2-default-rtdb.europe-west1.firebasedatabase.app/"
+
+apiKey: "AIzaSyAQ4v5yNtDavDf9R1iun95fw76lBM7wmw8",
+
+authDomain: "supplement-store-c68a2.firebaseapp.com",
+
+projectId: "supplement-store-c68a2",
+
+storageBucket: "supplement-store-c68a2.appspot.com",
+
+messagingSenderId: "954928525287",
+
+appId: "1:954928525287:web:cdb2a46a25c4f2b0e45742",
+
+measurementId: "G-BVM6DBK7N2",
+
+databaseURL: "https://supplement-store-c68a2-default-rtdb.europe-west1.firebasedatabase.app/"
+
 };
 
 3.Stripe Setup:
@@ -118,7 +127,7 @@ const firebaseConfig = {
 Update the Stripe keys in your project with your Stripe account details:
 
 const stripeConfig = {
-  publishableKey: ""pk_test_51PiQZjRtHdvVHimoxL7A4WKmSXl65EWI2EiHlVBoF3sI7bLgZZOE3ywM7xvldhjZUU5stSqgluUBxcB4ZH7bl6cn00DHSKqZKB"",
+publishableKey: "pk_test_51PiQZjRtHdvVHimoxL7A4WKmSXl65EWI2EiHlVBoF3sI7bLgZZOE3ywM7xvldhjZUU5stSqgluUBxcB4ZH7bl6cn00DHSKqZKB",
 };
 
 4.Deploy to Firebase:
