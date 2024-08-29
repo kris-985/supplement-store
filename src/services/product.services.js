@@ -1,4 +1,4 @@
-import { get, onValue, push, ref, update } from "firebase/database";
+import { get, onValue, push, ref, set, update } from "firebase/database";
 import { db } from "../firebase";
 
 export const fromProductsDocument = (snapshot) => {
@@ -143,4 +143,25 @@ export const getOrderHistory = async (username) => {
       products: Array.isArray(order.products) ? order.products : [],
     }));
   });
+};
+
+export const addToCart = async (user, product, quantity) => {
+  const updates = {};
+  updates[`/users/${user}/cart/${product.id}`] = { ...product, quantity };
+
+  await update(ref(db), updates);
+};
+
+export const renderFavorite = async (isProductFavorite, user, product) => {
+  const updates = {};
+  if (isProductFavorite) {
+    updates[`/users/${user}/favorites/${product.id}`] = null;
+  } else {
+    updates[`/users/${user}/favorites/${product.id}`] = product;
+  }
+  await update(ref(db), updates);
+};
+
+export const setShoppingCart = (username, product) => {
+  return set(ref(db, `users/${username}/cart`), { ...product });
 };
