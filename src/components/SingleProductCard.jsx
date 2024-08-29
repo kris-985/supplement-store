@@ -1,33 +1,21 @@
 import React, { useContext, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import AppContext from "../context/AppContext";
-import { ref, update } from "firebase/database";
-import { db } from "../firebase";
+import { addToCart, renderFavorite } from "../services/product.services";
 
 export const SingleProductCard = ({ product, like, dislike }) => {
   const { user } = useContext(AppContext);
   const [quantity, setQuantity] = useState(1);
   const isProductFavorite = product.likedBy.includes(user);
   const color = isProductFavorite ? "red" : "grey";
-  const renderFavorite = () =>
+
+  const toggleFavorite = () =>
     isProductFavorite ? dislike(product) : like(product);
 
-  const handleAddToCart = (product) => {
-    const updates = {};
-    updates[`/users/${user}/cart/${product.id}`] = { ...product, quantity };
-
-    update(ref(db), updates);
-  };
-
   const handleFavorite = () => {
-    const updates = {};
-    if (isProductFavorite) {
-      updates[`/users/${user}/favorites/${product.id}`] = null;
-    } else {
-      updates[`/users/${user}/favorites/${product.id}`] = product;
-    }
-    update(ref(db), updates);
-    renderFavorite();
+    renderFavorite(isProductFavorite, user, product).then(() => {
+      toggleFavorite();
+    });
   };
 
   const handleQuantityChange = (amount) => {
@@ -36,14 +24,25 @@ export const SingleProductCard = ({ product, like, dislike }) => {
     }
   };
 
+  const handleBuyNow = () => {
+    setQuantity((prevQuantity) => {
+      const newQuantity = prevQuantity + 1;
+
+      addToCart(user, product, newQuantity);
+
+      return newQuantity;
+    });
+  };
+
   return (
     <div className="col-md-4 mb-4">
-      <div className="card h-100 shadow red-shadow border-3 border border-danger">
+      <div className="card h-100 shadow red-shadow border-3 border border-danger min-h-400 min-w-400">
         <div className="position-relative">
           <img
-            src={product.content.picture || "https://via.placeholder.com/150"}
+            src={product.content.picture || "https://via.placeholder.com/400"}
             className="card-img-top"
             alt={product.content.name}
+            style={{ width: "400px", height: "400px", objectFit: "cover" }}
           />
           <button
             onClick={handleFavorite}
@@ -79,11 +78,7 @@ export const SingleProductCard = ({ product, like, dislike }) => {
               +
             </button>
           </div>
-
-          <button
-            className="btn btn-danger mt-auto"
-            onClick={() => handleAddToCart(product)}
-          >
+          <button className="btn btn-danger mt-auto" onClick={handleBuyNow}>
             Buy now!
           </button>
         </div>

@@ -1,22 +1,26 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { FaTimes } from "react-icons/fa";
+import { setShoppingCart } from "../services/product.services";
+import AppContext from "../context/AppContext";
 
 export const SingleCartCard = ({ purchasedProducts, setPurchasedProducts }) => {
-  const handleRemove = (productId) => {
-    const updatedProducts = Object.values(purchasedProducts).filter(
-      (product) => product.id !== productId
-    );
-    setPurchasedProducts(updatedProducts);
+  const { user } = useContext(AppContext);
+
+  const changeQuantity = (product, newQuantity) => {
+    const newItems = { ...purchasedProducts };
+    newItems[product.id].quantity = newItems[product.id].quantity
+      ? Number(newQuantity)
+      : product.quantity;
+    console.log(newQuantity);
+    setShoppingCart(user, { ...newItems });
+    setPurchasedProducts(newItems);
   };
 
-  const handleQuantityChange = (productId, newQuantity) => {
-    setPurchasedProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === productId
-          ? { ...product, quantity: newQuantity }
-          : product
-      )
-    );
+  const removeProduct = (product) => {
+    const newItems = { ...purchasedProducts };
+    delete newItems[product];
+    setShoppingCart(user, { ...newItems });
+    setPurchasedProducts(newItems);
   };
 
   return (
@@ -50,18 +54,13 @@ export const SingleCartCard = ({ purchasedProducts, setPurchasedProducts }) => {
                       id={`quantity-${product.id}`}
                       min="1"
                       value={product.quantity}
-                      onChange={(e) =>
-                        handleQuantityChange(
-                          product.id,
-                          parseInt(e.target.value)
-                        )
-                      }
+                      onChange={(e) => changeQuantity(product, e.target.value)}
                       className="form-control w-25"
                     />
                   </div>
                   <button
                     className="btn btn-outline-danger position-absolute top-0 end-0 m-2"
-                    onClick={() => handleRemove(product.id)}
+                    onClick={() => removeProduct(product.id)}
                     style={{
                       background: "transparent",
                       border: "none",
