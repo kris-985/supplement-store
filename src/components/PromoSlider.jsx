@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { promotions } from "../utils/helpers";
 
 const sliderSettings = {
   dots: true,
@@ -13,40 +14,6 @@ const sliderSettings = {
   autoplay: true,
   autoplaySpeed: 3000,
 };
-
-const promotions = [
-  {
-    name: "Protein Power",
-    discount: "30% off",
-    description: "High-quality whey protein to fuel your workouts.",
-  },
-  {
-    name: "Vitamins Pack",
-    discount: "Buy 1 Get 1 Free",
-    description: "Boost your immune system with our top-selling vitamins.",
-  },
-  {
-    name: "Omega 3 Fish Oil",
-    discount: "25% off",
-    description:
-      "Support your heart health with essential omega-3 fatty acids.",
-  },
-  {
-    name: "BCAA Energy",
-    discount: "20% off",
-    description: "Enhance muscle recovery with our top BCAA formula.",
-  },
-  {
-    name: "Pre-Workout Explosion",
-    discount: "15% off",
-    description: "Maximize your energy and focus during workouts.",
-  },
-  {
-    name: "Super Greens Powder",
-    discount: "10% off",
-    description: "Get your daily dose of greens for optimal health.",
-  },
-];
 
 export const PromoSlider = () => {
   return (
