@@ -177,3 +177,186 @@ export const partners = [
     logo: "https://e7.pngegg.com/pngimages/906/446/png-clipart-dietary-supplement-bodybuilding-com-logo-physical-fitness-bodybuilding-love-hand.png",
   },
 ];
+
+export const promotions = [
+  {
+    name: "Protein Power",
+    discount: "30% off",
+    description: "High-quality whey protein to fuel your workouts.",
+  },
+  {
+    name: "Vitamins Pack",
+    discount: "Buy 1 Get 1 Free",
+    description: "Boost your immune system with our top-selling vitamins.",
+  },
+  {
+    name: "Omega 3 Fish Oil",
+    discount: "25% off",
+    description:
+      "Support your heart health with essential omega-3 fatty acids.",
+  },
+  {
+    name: "BCAA Energy",
+    discount: "20% off",
+    description: "Enhance muscle recovery with our top BCAA formula.",
+  },
+  {
+    name: "Pre-Workout Explosion",
+    discount: "15% off",
+    description: "Maximize your energy and focus during workouts.",
+  },
+  {
+    name: "Super Greens Powder",
+    discount: "10% off",
+    description: "Get your daily dose of greens for optimal health.",
+  },
+];
+
+export const questions = [
+  {
+    text: "What is the most popular fitness supplement?",
+    options: ["Protein", "Creatine", "BCAA", "Multivitamins"],
+  },
+  {
+    text: "When is the best time to take supplements?",
+    options: ["Before workout", "After workout", "During workout", "Anytime"],
+  },
+  {
+    text: "What do you prefer for recovery?",
+    options: ["Sleep", "Massage", "Sauna", "Supplements"],
+  },
+  {
+    text: "How often do you take protein supplements?",
+    options: ["Daily", "Weekly", "Monthly", "Never"],
+  },
+  {
+    text: "Which type of workout do you prefer?",
+    options: ["Strength training", "Cardio", "HIIT", "Yoga"],
+  },
+  {
+    text: "What is your fitness goal?",
+    options: ["Muscle gain", "Weight loss", "Endurance", "Flexibility"],
+  },
+  {
+    text: "How long do you usually work out?",
+    options: [
+      "Less than 30 minutes",
+      "30-60 minutes",
+      "1-2 hours",
+      "More than 2 hours",
+    ],
+  },
+  {
+    text: "Do you follow a specific diet?",
+    options: [
+      "Yes, high protein",
+      "Yes, low carb",
+      "Yes, balanced diet",
+      "No specific diet",
+    ],
+  },
+  {
+    text: "How do you track your fitness progress?",
+    options: ["Fitness app", "Journal", "Personal trainer", "I don’t track"],
+  },
+  {
+    text: "How often do you exercise per week?",
+    options: ["1-2 times", "3-4 times", "5-6 times", "Every day"],
+  },
+];
+
+export const testimonials = [
+  {
+    name: "John Smith",
+    review:
+      "These supplements are amazing! I already feel much better after just a week. I have tried many products in the past, but nothing has worked as effectively as this. Highly recommend to anyone looking to improve their health.",
+  },
+  {
+    name: "Mary Johnson",
+    review:
+      "Since I started using them, I have more energy throughout the day. My daily activities have become much easier to manage, and I no longer feel exhausted by the afternoon. This is a game-changer!",
+  },
+  {
+    name: "George Brown",
+    review:
+      "I recommend them to everyone! The quality is top-notch and the benefits are undeniable. My overall well-being has improved significantly. It's worth every penny!",
+  },
+  {
+    name: "Elena Davis",
+    review:
+      "Incredible product! I will keep using it because it has truly made a difference in my daily life. I feel more active, alert, and healthier overall. Can't imagine my routine without it.",
+  },
+  {
+    name: "Nick Wilson",
+    review:
+      "Excellent value for money. I'm very satisfied with the results and the price point. It's rare to find such high-quality supplements at this price. Definitely a repeat customer.",
+  },
+  {
+    name: "Daniela Martinez",
+    review:
+      "I've noticed significant improvement since I started taking them. My immune system feels stronger, and I haven't been sick once since I started. Thank you for such a great product!",
+  },
+  {
+    name: "Alexander Garcia",
+    review:
+      "The supplements are very effective and easy to take. I appreciate the natural ingredients and the fact that they don't upset my stomach like other products I've tried. Fantastic results!",
+  },
+  {
+    name: "Victoria Anderson",
+    review:
+      "I saw a difference in just one week. Highly recommend! My skin looks better, I sleep better, and I have more energy. This product has improved multiple aspects of my life.",
+  },
+  {
+    name: "Stanley Taylor",
+    review:
+      "I'm very impressed with the results. Will order again. The changes I've seen in my health are nothing short of amazing. I feel rejuvenated and more vibrant every day.",
+  },
+  {
+    name: "Anna Moore",
+    review:
+      "The product is very good and you can feel the difference. Excellent choice for anyone looking to boost their health. I can't believe how much better I feel after taking these supplements.",
+  },
+  {
+    name: "Chris Evans",
+    review:
+      "These supplements have become a staple in my daily routine. I love how they make me feel more energetic and balanced. Highly recommend to anyone looking for a reliable health boost.",
+  },
+  {
+    name: "Laura Taylor",
+    review:
+      "I was skeptical at first, but after a few weeks, I am convinced. My digestion has improved, and I have more stamina during workouts. These supplements are a must-have!",
+  },
+  {
+    name: "James Wilson",
+    review:
+      "Fantastic product! I've tried many other brands, but none come close to the effectiveness of these supplements. My overall health has improved, and I feel more vibrant.",
+  },
+  {
+    name: "Patricia Brown",
+    review:
+      "I can't say enough good things about these supplements. They've improved my mood, energy levels, and overall well-being. I feel like a new person. Highly recommend!",
+  },
+  {
+    name: "Robert Johnson",
+    review:
+      "These supplements have exceeded my expectations. My focus and concentration have improved significantly. I feel more productive and motivated every day. A great addition to my health regimen.",
+  },
+];
+
+export const values = [
+  {
+    title: "Quality",
+    description:
+      "We ensure that every product meets our high standards of quality and effectiveness.",
+  },
+  {
+    title: "Customer Care",
+    description:
+      "Our friendly and knowledgeable team is always here to help you find the best products for your needs.",
+  },
+  {
+    title: "Sustainability",
+    description:
+      "We are committed to environmentally friendly practices and sustainable sourcing of our products.",
+  },
+];

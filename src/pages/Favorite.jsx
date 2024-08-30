@@ -15,7 +15,7 @@ export const Favorite = () => {
     if (user) {
       getLikedProducts(user).then(setProducts).catch(console.error);
     } else {
-      return console.log("Not working");
+      console.log("Not working");
     }
   }, [user]);
 
@@ -46,23 +46,21 @@ export const Favorite = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-around m-10 mt-3">
+    <div className="container mt-3">
       <div className="row">
         {products.length === 0 ? (
           <h1>No products</h1>
         ) : (
           products
             .sort((a, b) => b.createdOn - a.createdOn)
-            .map((product, key) => {
-              return (
-                <SingleProductCard
-                  key={key}
-                  product={product}
-                  like={like}
-                  dislike={dislike}
-                />
-              );
-            })
+            .map((product, key) => (
+              <SingleProductCard
+                key={key}
+                product={product}
+                like={like}
+                dislike={dislike}
+              />
+            ))
         )}
       </div>
     </div>

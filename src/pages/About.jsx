@@ -1,23 +1,5 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
-const values = [
-  {
-    title: "Quality",
-    description:
-      "We ensure that every product meets our high standards of quality and effectiveness.",
-  },
-  {
-    title: "Customer Care",
-    description:
-      "Our friendly and knowledgeable team is always here to help you find the best products for your needs.",
-  },
-  {
-    title: "Sustainability",
-    description:
-      "We are committed to environmentally friendly practices and sustainable sourcing of our products.",
-  },
-];
+import { values } from "../utils/helpers";
 
 export const About = () => {
   return (
