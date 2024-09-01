@@ -30,13 +30,13 @@ export const Footer = () => {
               </NavList>
               <ContactInfo>
                 <h6>Get in touch</h6>
-                <p>Address: 23 Dobri Voynikov</p>
+                <p>Address: 23 Dobri Voynikov, Sofia</p>
                 <p>Email: info@fitart.bg</p>
                 <p>Phone: +359 123 456 789</p>
                 <p>Monday - Saturday:</p> 09:00 - 18:00
               </ContactInfo>
             </NavContainer>
-            <ImageContainer href="https://krisfit9.com/">
+            <ImageContainer href="https://github.com/kris-985/krisfit9">
               <KRISFITImage src={krisfit9} alt="Krisfit9" />
               <Description>
                 Personal training, consultations, and customized nutrition and
