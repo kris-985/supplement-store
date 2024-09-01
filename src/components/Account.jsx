@@ -31,18 +31,6 @@ export const Account = () => {
                   <li className="list-group-item">
                     <strong>Email:</strong> {userData.email}
                   </li>
-                  <li className="list-group-item">
-                    <strong>Orders:</strong>
-                    {userData?.orders ? (
-                      userData.orders
-                    ) : (
-                      <span>No Orders</span>
-                    )}
-                  </li>
-                  <li className="list-group-item">
-                    <strong>Shipping Address:</strong>
-                    {userData.shippingAdress || <span>No Address</span>}
-                  </li>
                 </ul>
               </div>
             </StyledCard>

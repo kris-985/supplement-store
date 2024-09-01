@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { values } from "../utils/helpers";
+import { texts, values } from "../utils/helpers";
 
 export const About = () => {
   return (
@@ -15,37 +15,16 @@ export const About = () => {
               />
             </ImageContainer>
             <div className="col-md-6">
-              <h2 className="text-danger mb-4">We are FitArt</h2>
-              <p className="mb-3">
-                Welcome to our premier supplement store, your ultimate
-                destination for high-quality nutritional supplements and
-                wellness products. We are dedicated to providing our customers
-                with a wide range of vitamins, minerals, and herbal supplements
-                to support their health and wellness goals.
-              </p>
-              <p className="mb-3">
-                Our mission is to enhance your health and well-being by offering
-                only the best products on the market. We carefully select each
-                item in our store to ensure it meets our rigorous standards for
-                quality, potency, and purity. Whether you're looking to boost
-                your immune system, improve your energy levels, or support your
-                overall health, we have the perfect supplement for you.
-              </p>
-              <p className="mb-3">
-                At our store, we believe in the power of natural health
-                solutions and strive to educate our customers about the benefits
-                of supplements. Our knowledgeable staff is always available to
-                answer your questions and help you find the right products for
-                your needs.
-              </p>
-              <p className="mb-4">
-                Thank you for choosing our supplement store. We look forward to
-                supporting you on your journey to optimal health.
-              </p>
+              <h2 className="text-danger mb-4">{texts.title}</h2>
+              {texts.paragraphs.map((paragraph, index) => (
+                <p className="mb-3" key={index}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
           <div className="my-5 text-center">
-            <h3 className="mb-4 text-danger">Our Values</h3>
+            <h3 className="mb-4 text-danger">{texts.valuesTitle}</h3>
             <div className="row">
               {values.map((value, index) => (
                 <div className="col-md-4 mb-4" key={index}>

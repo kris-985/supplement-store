@@ -30,9 +30,9 @@ export const Footer = () => {
               </NavList>
               <ContactInfo>
                 <h6>Get in touch</h6>
-                <p>Address: 123 Street Name</p>
-                <p>Email: example@example.com</p>
-                <p>Phone: (123) 456-7890</p>
+                <p>Address: 23 Dobri Voynikov</p>
+                <p>Email: info@fitart.bg</p>
+                <p>Phone: +359 123 456 789</p>
                 <p>Monday - Saturday:</p> 09:00 - 18:00
               </ContactInfo>
             </NavContainer>

@@ -360,3 +360,25 @@ export const values = [
       "We are committed to environmentally friendly practices and sustainable sourcing of our products.",
   },
 ];
+
+export const texts = {
+  title: "We are FitArt",
+  paragraphs: [
+    "Welcome to our premier supplement store, your ultimate destination for high-quality nutritional supplements and wellness products. We are dedicated to providing our customers with a wide range of vitamins, minerals, and herbal supplements to support their health and wellness goals.",
+    "Our mission is to enhance your health and well-being by offering only the best products on the market. We carefully select each item in our store to ensure it meets our rigorous standards for quality, potency, and purity. Whether you're looking to boost your immune system, improve your energy levels, or support your overall health, we have the perfect supplement for you.",
+    "At our store, we believe in the power of natural health solutions and strive to educate our customers about the benefits of supplements. Our knowledgeable staff is always available to answer your questions and help you find the right products for your needs.",
+    "Thank you for choosing our supplement store. We look forward to supporting you on your journey to optimal health.",
+  ],
+  valuesTitle: "Our Values",
+};
+
+export const content = [
+  {
+    title: "Free Shipping",
+    text: "Enjoy the convenience of free shipping on all orders, no matter the value. Our fast and reliable delivery service ensures that your purchases arrive at your doorstep quickly and safely. We believe in providing value to our customers, which is why we cover the shipping costs for you. Whether you're ordering a small item or a large one, you can count on us to get it to you without any additional charges. Take advantage of our free shipping offer today and experience a hassle-free shopping journey with us.",
+  },
+  {
+    title: "Consultations",
+    text: "Our team of experts is always ready to provide you with professional consultations and advice tailored to your needs. Whether you have questions about our products, need guidance on making the best purchase, or require detailed information on our services, we are here to help. Our consultation services are designed to ensure that you make informed decisions and get the most out of your purchases. Contact us anytime for personalized assistance, and let us help you achieve your goals with expert support and reliable advice.",
+  },
+];
