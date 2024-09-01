@@ -3,13 +3,23 @@ import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 
 export const NewsletterForm = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (email.trim() === "") {
+      Swal.fire({
+        title: "Error!",
+        text: "Please enter your email address.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
 
     Swal.fire({
       title: "Success!",

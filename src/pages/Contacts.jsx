@@ -11,7 +11,7 @@ const contactDetails = [
   {
     icon: <FaMapMarkerAlt />,
     title: "Address",
-    text: "123 Main Street, Sofia, Bulgaria",
+    text: "23 Dobri Voynikov , Sofia, Bulgaria",
   },
   {
     icon: <FaPhoneAlt />,
@@ -21,7 +21,7 @@ const contactDetails = [
   {
     icon: <FaEnvelope />,
     title: "Email",
-    text: "info@healthstore.bg",
+    text: "info@fitart.bg",
   },
   {
     icon: <FaClock />,
