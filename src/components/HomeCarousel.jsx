@@ -7,7 +7,7 @@ export const HomeCarousel = () => {
   const images = [
     "https://www.ironbrothers-shop.com/cdn/shop/files/WheyProteinIsolate_ChocoholicChampion.png?v=1699889015&width=1080",
     "https://www.ironbrothers-shop.com/cdn/shop/files/WinterEdition_WheyProteinIsolate_Zimtstern.png?v=1699876022&width=1080",
-    "https://xplosiv.nz/media/catalog/product/cache/aadd22f13385e97bd2c31bcb82066b4a/x/p/xplosivisolate2lb_vanillarender.png",
+    "https://www.ironbrothers-shop.com/cdn/shop/files/WheyProtein_VanillaCream.png?v=1699889938&width=1080",
   ];
 
   return (
