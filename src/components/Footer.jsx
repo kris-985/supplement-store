@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { krisfit9, logo } from "../assets";
+import { NavLink as RouterNavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -16,16 +17,16 @@ export const Footer = () => {
               <NavList>
                 <h6>Navigation</h6>
                 <NavItem>
-                  <NavLink href="/">Home</NavLink>
+                  <StyledNavLink to="/">Home</StyledNavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/about">About</NavLink>
+                  <StyledNavLink to="/about">About</StyledNavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/products">Products</NavLink>
+                  <StyledNavLink to="/products">Products</StyledNavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/contacts">Contacts</NavLink>
+                  <StyledNavLink to="/contacts">Contacts</StyledNavLink>
                 </NavItem>
               </NavList>
               <ContactInfo>
@@ -33,7 +34,7 @@ export const Footer = () => {
                 <p>Address: 23 Dobri Voynikov, Sofia</p>
                 <p>Email: info@fitart.bg</p>
                 <p>Phone: +359 123 456 789</p>
-                <p>Monday - Saturday:</p> 09:00 - 18:00
+                <p>Monday - Saturday: 09:00 - 18:00</p>
               </ContactInfo>
             </NavContainer>
             <ImageContainer href="https://github.com/kris-985/krisfit9">
@@ -146,7 +147,7 @@ const NavItem = styled.li`
   margin: 10px 0;
 `;
 
-const NavLink = styled.a`
+const StyledNavLink = styled(RouterNavLink)`
   color: #333;
   text-decoration: none;
   font-size: 16px;
