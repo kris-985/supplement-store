@@ -42,7 +42,7 @@ export const SingleProductCard = ({ product, like, dislike }) => {
             src={product.content.picture || "https://via.placeholder.com/400"}
             className="card-img-top"
             alt={product.content.name}
-            style={{ width: "400px", height: "400px", objectFit: "cover" }}
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
           />
           <button
             onClick={handleFavorite}
