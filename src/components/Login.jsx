@@ -8,6 +8,7 @@ import FormInputLogin from "../form/FormInputLogin";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
 
@@ -18,6 +19,7 @@ export const Login = () => {
       navigate("/");
     } catch (error) {
       console.error("Error logging in:", error);
+      setError("Invalid email or password. Please try again.");
     }
   };
 
@@ -29,6 +31,7 @@ export const Login = () => {
             <OverImage className="card p-4">
               <h1 className="text-center mb-4 text-danger">LOGIN</h1>
               <form onSubmit={handleLogin}>
+                {error && <div className="alert alert-danger">{error}</div>}
                 <FormInputLogin
                   id="email"
                   label="Email"
