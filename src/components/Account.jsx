@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import AppContext from "../context/AppContext";
 import "bootstrap/dist/css/bootstrap.min.css";

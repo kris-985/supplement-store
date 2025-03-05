@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { partners } from "../utils/helpers";

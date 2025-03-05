@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
 import { scrollToTop } from "../utils/helpers";

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { krisfit9, logo } from "../assets";
 import { NavLink as RouterNavLink } from "react-router-dom";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import styled from "styled-components";
 import { questions } from "../utils/helpers";
