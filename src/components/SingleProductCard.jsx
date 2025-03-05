@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { FaHeart } from "react-icons/fa";
 import AppContext from "../context/AppContext";
 import { addToCart, renderFavorite } from "../services/product.services";
@@ -6,13 +7,24 @@ import { addToCart, renderFavorite } from "../services/product.services";
 export const SingleProductCard = ({ product, like, dislike }) => {
   const { user } = useContext(AppContext);
   const [quantity, setQuantity] = useState(1);
-  const isProductFavorite = product.likedBy.includes(user);
+  const isProductFavorite = user ? product.likedBy.includes(user) : false;
   const color = isProductFavorite ? "red" : "grey";
 
-  const toggleFavorite = () =>
+  const showLoginAlert = () => alert("You need to sign up or log in first!");
+
+  const toggleFavorite = () => {
+    if (!user) {
+      showLoginAlert();
+      return;
+    }
     isProductFavorite ? dislike(product) : like(product);
+  };
 
   const handleFavorite = () => {
+    if (!user) {
+      showLoginAlert();
+      return;
+    }
     renderFavorite(isProductFavorite, user, product).then(() => {
       toggleFavorite();
     });
@@ -25,11 +37,13 @@ export const SingleProductCard = ({ product, like, dislike }) => {
   };
 
   const handleBuyNow = () => {
+    if (!user) {
+      showLoginAlert();
+      return;
+    }
     setQuantity((prevQuantity) => {
       const newQuantity = prevQuantity + 1;
-
       addToCart(user, product, newQuantity);
-
       return newQuantity;
     });
   };
@@ -67,6 +81,7 @@ export const SingleProductCard = ({ product, like, dislike }) => {
             <button
               className="btn btn-outline-secondary"
               onClick={() => handleQuantityChange(-1)}
+              disabled={!user}
             >
               -
             </button>
@@ -74,11 +89,16 @@ export const SingleProductCard = ({ product, like, dislike }) => {
             <button
               className="btn btn-outline-secondary"
               onClick={() => handleQuantityChange(1)}
+              disabled={!user}
             >
               +
             </button>
           </div>
-          <button className="btn btn-danger mt-auto" onClick={handleBuyNow}>
+          <button
+            className="btn btn-danger mt-auto"
+            onClick={handleBuyNow}
+            disabled={!user}
+          >
             Buy now!
           </button>
         </div>
@@ -86,3 +106,22 @@ export const SingleProductCard = ({ product, like, dislike }) => {
     </div>
   );
 };
+
+// PropTypes validation
+SingleProductCard.propTypes = {
+  product: PropTypes.shape({
+    likedBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+    content: PropTypes.shape({
+      picture: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      price: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+    }).isRequired,
+    rating: PropTypes.number,
+  }).isRequired,
+  like: PropTypes.func.isRequired,
+  dislike: PropTypes.func.isRequired,
+};
+
+export default SingleProductCard;
