@@ -1,4 +1,5 @@
-import React, { Fragment, useContext } from "react";
+import { Fragment, useContext } from "react";
+import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 import { setShoppingCart } from "../services/product.services";
 import AppContext from "../context/AppContext";
@@ -76,4 +77,9 @@ export const SingleCartCard = ({ purchasedProducts, setPurchasedProducts }) => {
       ))}
     </Fragment>
   );
+};
+
+SingleCartCard.propTypes = {
+  purchasedProducts: PropTypes.object.isRequired,
+  setPurchasedProducts: PropTypes.func.isRequired,
 };

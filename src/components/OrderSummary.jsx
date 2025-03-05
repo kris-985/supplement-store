@@ -1,10 +1,11 @@
 import { Elements } from "@stripe/react-stripe-js";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { CheckoutForm } from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import AppContext from "../context/AppContext";
 import { saveOrderHistory } from "../services/product.services";
 import { priceSum, validCodes } from "../utils/helpers";
+import PropTypes from "prop-types";
 
 const stripePromise = loadStripe(
   "pk_test_51PiQZjRtHdvVHimoxL7A4WKmSXl65EWI2EiHlVBoF3sI7bLgZZOE3ywM7xvldhjZUU5stSqgluUBxcB4ZH7bl6cn00DHSKqZKB"
@@ -23,7 +24,7 @@ export const OrderSummary = ({
     purchasedProducts,
     appliedDiscounts
   );
-  
+
   const handleAddressChange = (event) => {
     setShippingAddress(event.target.value);
   };
@@ -137,4 +138,10 @@ export const OrderSummary = ({
       </div>
     </div>
   );
+};
+
+OrderSummary.propTypes = {
+  purchasedProducts: PropTypes.object.isRequired,
+  setPaymentStatus: PropTypes.func.isRequired,
+  setPurchasedProducts: PropTypes.func.isRequired,
 };

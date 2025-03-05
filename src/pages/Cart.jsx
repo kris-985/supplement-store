@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "../context/AppContext";
 import { getPurchasedProducts } from "../services/product.services";
 import { OrderSummary } from "../components/OrderSummary";
@@ -19,7 +19,7 @@ export const Cart = () => {
     } else {
       console.error("User is not defined");
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="container mt-5">

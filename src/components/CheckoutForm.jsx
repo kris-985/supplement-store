@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import PropTypes from "prop-types";
 
 export const CheckoutForm = ({
   totalPrice,
@@ -48,4 +49,10 @@ export const CheckoutForm = ({
       </button>
     </form>
   );
+};
+
+CheckoutForm.propTypes = {
+  totalPrice: PropTypes.number.isRequired,
+  setPaymentStatus: PropTypes.func.isRequired,
+  handleSuccessfulPayment: PropTypes.func.isRequired,
 };
